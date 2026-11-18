@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: chat-online-realtime
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: OWNER_PASSWORD
+        sync: false
+      - key: ROOM_NAME
+        value: Phòng chat trực tuyến

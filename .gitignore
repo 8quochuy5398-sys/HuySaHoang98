@@ -1,0 +1,6 @@
+node_modules/
+.env
+chat-data.json
+chat-data.json.tmp
+chat-data.json.corrupt
+uploads/
