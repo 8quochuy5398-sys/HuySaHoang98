@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chat trực tuyến</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- Màn hình vào phòng: đặt tên hiển thị -->
+<main id="joinView" class="join-view">
+  <section class="join-card">
+    <h1 id="roomTitleJoin">Phòng chat trực tuyến</h1>
+    <p class="join-sub">Đặt một cái tên rồi vào trò chuyện ngay, không cần tài khoản.</p>
+    <form id="joinForm">
+      <label for="nameInput">Tên hiển thị của bạn</label>
+      <input id="nameInput" type="text" maxlength="20" autocomplete="off"
+             placeholder="Ví dụ: Minh Anh" autofocus>
+      <p class="hint">2–20 ký tự, chỉ gồm chữ, số, khoảng trắng, gạch dưới, gạch ngang, dấu chấm.</p>
+      <p id="joinError" class="error" hidden></p>
+      <button type="submit" class="btn-primary">Vào phòng chat</button>
+    </form>
+  </section>
+</main>
+
+<!-- Màn hình chat -->
+<main id="chatView" class="chat-view" hidden>
+  <header class="chat-header">
+    <div class="header-left">
+      <h1 id="roomTitle">Phòng chat trực tuyến</h1>
+      <span id="lockBadge" class="lock-badge" hidden>🔒 Phòng đang khóa</span>
+    </div>
+    <div class="header-right">
+      <span id="onlineCount" class="online-count">0 người online</span>
+      <button id="ownerBtn" class="btn-ghost" type="button">👑 Chủ phòng</button>
+      <button id="leaveBtn" class="btn-ghost" type="button">Rời phòng</button>
+    </div>
+  </header>
+
+  <div class="chat-body">
+    <section class="messages-wrap">
+      <div id="messages" class="messages"></div>
+      <p id="typingIndicator" class="typing" hidden></p>
+      <p id="chatError" class="error" hidden></p>
+      <div id="imagePreview" class="image-preview" hidden>
+        <img id="previewImg" alt="Ảnh sắp gửi">
+        <span id="previewName"></span>
+        <button id="removeImageBtn" type="button" title="Bỏ ảnh này">✕</button>
+      </div>
+      <form id="msgForm" class="msg-form">
+        <label id="attachLabel" class="attach-btn" title="Gửi hình ảnh">📷<input id="imageInput" type="file" accept="image/*" hidden></label>
+        <input id="msgInput" type="text" maxlength="500" autocomplete="off"
+               placeholder="Nhắn gì đó...">
+        <button id="sendBtn" type="submit" class="btn-primary">Gửi</button>
+      </form>
+    </section>
+
+    <aside class="sidebar">
+      <h2>Đang online</h2>
+      <ul id="userList" class="user-list"></ul>
+
+      <section id="ownerPanel" class="owner-panel" hidden>
+        <h2>Bảng chủ phòng</h2>
+        <div id="ownerLoginBox">
+          <label for="ownerPassword">Mật khẩu chủ phòng</label>
+          <input id="ownerPassword" type="password" autocomplete="off">
+          <p id="ownerLoginError" class="error" hidden></p>
+          <button id="ownerLoginBtn" type="button" class="btn-primary">Nhận quyền chủ phòng</button>
+        </div>
+        <div id="ownerControls" hidden>
+          <button id="lockBtn" type="button" class="btn-warn">🔒 Khóa phòng</button>
+          <button id="clearBtn" type="button" class="btn-danger">🗑 Xóa toàn bộ chat</button>
+          <h3>Danh sách bị cấm</h3>
+          <ul id="bannedList" class="banned-list"></ul>
+        </div>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
